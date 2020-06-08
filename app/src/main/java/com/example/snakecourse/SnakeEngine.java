@@ -1,10 +1,13 @@
 package com.example.snakecourse;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -14,10 +17,13 @@ import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-
+import android.content.Intent;
 public class SnakeEngine extends SurfaceView implements Runnable {
     // Our game thread for the main game loop
+
     private Thread thread = null;
+
+    DatabaseHelper db ;
 
     // To hold a reference to the Activity
     private Context context;
@@ -43,6 +49,8 @@ public class SnakeEngine extends SurfaceView implements Runnable {
     private int bobX;
     private int bobY;
 
+    private String vemail = MainActivity.veremail;
+
     // The size in pixels of a snake segment
     private int blockSize;
 
@@ -59,7 +67,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 // We will draw the frame much more often
 
     // How many points does the player have
-    private int score;
+    public int score;
 
     // The location in the grid of all the segments
     private int[] snakeXs;
@@ -85,6 +93,8 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
         screenX = size.x;
         screenY = size.y;
+        //initialize context for db
+        this.db = new DatabaseHelper(context);
 
         // Work out how many pixels each block is
         blockSize = screenX / NUM_BLOCKS_WIDE;
@@ -136,9 +146,6 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
         }
     }
-
-
-
     public void pause() {
         isPlaying = false;
         try {
@@ -162,12 +169,14 @@ public class SnakeEngine extends SurfaceView implements Runnable {
         // Get Bob ready for dinner
         spawnBob();
 
+
         // Reset the score
         score = 0;
 
         // Setup nextFrameTime so an update is triggered
         nextFrameTime = System.currentTimeMillis();
     }
+
     public void spawnBob() {
         Random random = new Random();
         bobX = random.nextInt(NUM_BLOCKS_WIDE - 1) + 1;
@@ -215,7 +224,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                 break;
         }
     }
-    private boolean detectDeath(){
+    public boolean detectDeath(){
         // Has the snake died?
         boolean dead = false;
 
@@ -231,7 +240,6 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                 dead = true;
             }
         }
-
         return dead;
     }
     public void update() {
@@ -246,6 +254,10 @@ public class SnakeEngine extends SurfaceView implements Runnable {
             //start again
             soundPool.play(crash, 1, 1, 0, 0, 1);
 
+
+            //DatabaseHelper db = new DatabaseHelper(getContext());
+            if (vemail != null){
+            this.db.insertScore(score,vemail);}
             newGame();
         }
     }
@@ -343,4 +355,5 @@ public class SnakeEngine extends SurfaceView implements Runnable {
         }
         return true;
     }
+
 }

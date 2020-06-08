@@ -5,25 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#142220"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="196dp"
-        android:layout_height="133dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="254dp"
-        android:contentDescription="game"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="8sp"
-        android:text="Snake Game"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="36sp"
-        android:typeface="normal"
-        tools:text="Snake Game" />
 
     <Button
         android:id="@+id/mainlogbut"
@@ -31,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="7dp"
         android:text="Login" />
 
     <Button
@@ -41,16 +24,51 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="106dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="98dp"
         android:text="Register" />
+
+    <Button
+        android:id="@+id/leaderboard"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="270dp"
+        android:text="Leaderboard" />
+
 
     <Button
         android:id="@+id/playbut"
         android:layout_width="142dp"
         android:layout_height="97dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="102dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginBottom="13dp"
         android:text="Play game" />
+
+    <TextView
+        android:id="@+id/getemail"
+        android:layout_width="149dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="100dp"
+        android:textStyle="normal|bold|italic" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="395dp"
+        android:layout_height="350dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="166dp"
+        app:srcCompat="@drawable/snakh" />
+
+
 </RelativeLayout>

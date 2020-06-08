@@ -10,16 +10,19 @@ import androidx.annotation.Nullable;
 
 import java.sql.SQLClientInfoException;
 
+import static android.provider.Contacts.SettingsColumns.KEY;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
-        super(context,"Login.db" , null, 1);
+        super(context,"Login.db" , null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 db.execSQL("Create table user(email text primary key,password)");
+db.execSQL("Create table leaderboard(email text ,score int)");
     }
 
     @Override
@@ -35,6 +38,15 @@ db.execSQL("drop table if exists user");
         if (ins==-1) return false;
         else return true;
     }
+    public boolean insertScore(int score,String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("score",score);
+        contentValues.put("email",email);
+        long ins = db.insert("leaderboard",null,contentValues);
+        if (ins == -1 ) return false;
+        else return true;
+    }
     public boolean checkmail(String email){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from user where email =?",new String[]{email});
@@ -47,4 +59,11 @@ db.execSQL("drop table if exists user");
         if (cursor.getCount()>0)return true;
         else return false;
     }
+    public Cursor scoreboard()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from leaderboard", null);
+        return cursor;
+    }
+
 }
