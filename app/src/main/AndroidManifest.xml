@@ -13,12 +13,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
-                <data
-                    android:host="com.example.twitter.oauth"
-                    android:scheme="oauth" />
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
@@ -27,15 +22,7 @@
             android:name=".SnakeActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <data
-                    android:host="com.example.twitter.oauth"
-                    android:scheme="oauth" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper db;
     Button b1, b2,b3,b4;
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
             final TextView textViewToChange = (TextView) findViewById(R.id.getemail);
             textViewToChange.setText("Hello," + email);
             veremail = email;
+        }
+        if(email == null)
+        {
+            email = "guest";
+            final TextView textViewToChange = (TextView) findViewById(R.id.getemail);
+            textViewToChange.setText("Hello," + email);
         }
 
         b1.setOnClickListener(new View.OnClickListener() {

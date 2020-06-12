@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         db = new DatabaseHelper(this);
         e1 = (EditText) findViewById(R.id.email);
         e2 = (EditText) findViewById(R.id.pass);
@@ -46,15 +47,23 @@ public class RegisterActivity extends AppCompatActivity {
                 String s1 = e1.getText().toString();
                 String s2 = e2.getText().toString();
                 String s3 = e3.getText().toString();
+                if (!isValidEmail(s1))
+                {
+                    Toast.makeText(getApplicationContext(), "Invalid email format", Toast.LENGTH_SHORT).show();
+                }
                 if (s1.equals("") || s2.equals("") || s3.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
                 } else {
                     if (s2.equals(s3)) {
                         Boolean checkmail = db.checkmail(s1);
                         if (checkmail == true) {
-                            Boolean insert = db.insert(s1, s2);
+                            String pwhash  = db.MD5(s2);
+                            Boolean insert = db.insert(s1, pwhash);
+
                             if (insert == true) {
                                 Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(RegisterActivity.this, RegisterActivity.class);
+                                startActivity(i);
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "Email Already exists", Toast.LENGTH_SHORT).show();
@@ -63,5 +72,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }

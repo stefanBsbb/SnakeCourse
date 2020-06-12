@@ -12,11 +12,9 @@
         android:id="@+id/logEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="402dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName" />
@@ -25,10 +23,11 @@
         android:id="@+id/logPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="86dp"
-        android:layout_marginBottom="208dp"
+        android:layout_centerInParent="true"
+
+        android:layout_marginBottom="50dp"
+        android:gravity="bottom"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -37,10 +36,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginBottom="97dp"
+        android:layout_centerInParent="true"
         android:text="Login" />
 
     <Button
@@ -56,12 +53,9 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="198dp"
-        android:layout_height="379dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="61dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="250dp"
+        android:layout_centerInParent="true"
         app:srcCompat="@drawable/avatar" />
 
 </RelativeLayout>

@@ -25,9 +25,6 @@ public static String veremail;
         e2 = (EditText)findViewById(R.id.logPass);
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.backlogbut);
-
-
-
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +37,8 @@ public static String veremail;
             public void onClick(View v) {
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
-                Boolean checkmailpass = db.emailpassword(email,password);
+                String pwhash  = db.MD5(password);
+                Boolean checkmailpass = db.emailpassword(email,pwhash);
                 if (checkmailpass == true) {
                     Toast.makeText(getApplicationContext(), "successfully logged in", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);

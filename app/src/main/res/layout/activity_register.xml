@@ -13,16 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="150dp"
         android:text="Register" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="331dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="300dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName" />
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="182dp"
+        android:layout_marginBottom="250dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="131dp"
+        android:layout_marginBottom="200dp"
         android:ems="10"
         android:hint="ConfirmPassword"
         android:inputType="textPassword" />
@@ -56,7 +56,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="5dp"
         android:text="Login" />
 
     <Button
@@ -68,15 +68,12 @@
         android:layout_marginTop="102dp"
         android:layout_marginEnd="18dp"
         android:text="Back" />
-
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="230dp"
-        android:layout_height="210dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         app:srcCompat="@drawable/register_icon" />
-
-
 </RelativeLayout>
+
